@@ -1,7 +1,7 @@
 """test logic"""
 
 
-import plato.plato_facade as pf
+import smarti.plato_facade as pf
 
 
 def test_upload_workbook():

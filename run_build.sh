@@ -21,18 +21,18 @@ elif [ $1 = "-local" ]; then
     pip install --upgrade pip
     pip install -r ./requirements.txt
 
-    black plato
-    pylint --fail-under=10.0 plato
-    pytest --cov-fail-under=80 -v plato
+    black smarti tests
+    pylint --fail-under=9.9 smarti tests
+    pytest --cov-fail-under=90 -v tests
 elif [ $1 = "-test" ]; then
     trap 'abort' 0
     set -e
     
     echo "Running format, linter and tests"
     source .venv/bin/activate
-    black plato
-    pylint --fail-under=9.9 plato
-    pytest -v plato
+    black smarti tests
+    pylint --fail-under=9.9 smarti tests
+    pytest --cov-fail-under=90 -v tests
 elif [ $1 = "-docker" ]; then
     echo "Building and running docker image"
     docker stop smarti-container

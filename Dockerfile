@@ -8,9 +8,9 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 COPY . .
 
-RUN black plato
-RUN pylint --fail-under=10.0 plato
-RUN pytest -v plato
+RUN black smarti tests
+RUN pylint --fail-under=9.9 smarti tests
+RUN pytest --cov-fail-under=90 -v tests
 
 ENTRYPOINT ["python3"]
-CMD ["./plato/app.py" ]
+CMD ["./smarti/app.py" ]
