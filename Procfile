@@ -1,1 +1,1 @@
-web: gunicorn plato.app:app
+web: gunicorn smarti.app:app
