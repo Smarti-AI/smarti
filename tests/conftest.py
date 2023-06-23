@@ -4,8 +4,8 @@ import pytest
 import smarti.app
 
 
-@pytest.fixture
-def flask_app():
+@pytest.fixture(name="flask_app")
+def fixture_app():
     """return flask app"""
     yield smarti.app.app
 

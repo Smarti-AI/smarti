@@ -1,6 +1,5 @@
 """test logic"""
 
-import os
 import smarti.logic.facade as pf
 
 
@@ -15,9 +14,9 @@ def test_index(flask_app, client):
 
 def test_heroku_boot():
     """test content of boot file"""
-    with open("./Procfile") as f:
-        line = f.readlines()[0]
-        assert "smarti.app" in line
+    with open("./Procfile", mode="r", encoding="utf-8") as proc_file:
+        line = proc_file.readlines()[0]
+        assert line.split(" ")[-1] == "smarti.app:app"
 
 
 def test_upload_workbook():
