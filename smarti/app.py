@@ -1,13 +1,9 @@
 """flask app runner"""
-import io
-import logging
+
 import os
 import sys
-
-import pydub
+import logging
 import requests
-import soundfile as sf
-import speech_recognition as sr
 from flask import Flask, jsonify, request
 
 
@@ -75,7 +71,7 @@ def verify(req):
 
 # handle incoming webhook messages
 def handle_message(req):
-    """Parse Request body in json format"""
+    """ " Parse Request body in json format"""
     body = req.get_json()
     log.info("request body: {%s}", body)
 
@@ -112,90 +108,10 @@ def handle_whatsapp_message(body):
     if message["type"] == "text":
         message_body = message["text"]["body"]
     elif message["type"] == "audio":
-        audio_id = message["audio"]["id"]
-        message_body = handle_audio_message(audio_id)
-    elif message["type"] == "image":
-        # image_id = message["image"]["id"]
-        message_body = "image messages not yet supported"
-    elif message["type"] == "document":
-        # document_id = message["document"]["id"]
-        message_body = "document messages not yet supported"
-    elif message["type"] == "location":
-        # latitude = message["location"]["latitude"]
-        # longitude = message["location"]["longitude"]
-        message_body = "location messages not yet supported"
-    elif message["type"] == "contact":
-        # contact_id = message["contact"]["id"]
-        message_body = "contact messages not yet supported"
-    elif message["type"] == "sticker":
-        # sticker_id = message["sticker"]["id"]
-        message_body = "sticker messages not yet supported"
+        # audio_id = message["audio"]["id"]
+        message_body = "voice messages not yet supported"
     response = "you said: " + message_body
     send_whatsapp_message(body, response)
-
-
-# handle audio messages
-def handle_audio_message(audio_id):
-    """handle audio messages"""
-    audio_url = get_media_url(audio_id)
-    audio_bytes = download_media_file(audio_url)
-    audio_data = convert_audio_bytes(audio_bytes)
-    audio_text = recognize_audio(audio_data)
-    message = (
-        "Please summarize the following message in its original language "
-        f"as a list of bullet-points: {audio_text}"
-    )
-    return message
-
-
-# get the media url from the media id
-def get_media_url(media_id):
-    """get the media url from the media id"""
-    headers = {
-        "Authorization": f"Bearer {whatsapp_token}",
-    }
-    url = f"https://graph.facebook.com/v16.0/{media_id}/"
-    response = requests.get(url, headers=headers, timeout=30)
-    log.info("media id response: {%s}", response.json())
-    return response.json()["url"]
-
-
-# download the media file from the media url
-def download_media_file(media_url):
-    """download the media file from the media url"""
-    headers = {
-        "Authorization": f"Bearer {whatsapp_token}",
-    }
-    response = requests.get(media_url, headers=headers, timeout=30)
-    log.info("first 10 digits of the media file: {%s}", response.content[:10])
-    return response.content
-
-
-# convert ogg audio bytes to audio data which speechrecognition library can process
-def convert_audio_bytes(audio_bytes):
-    """convert ogg audio bytes to audio data which speechrecognition library can process"""
-    ogg_audio = pydub.AudioSegment.from_ogg(io.BytesIO(audio_bytes))
-    ogg_audio = ogg_audio.set_sample_width(4)
-    wav_bytes = ogg_audio.export(format="wav").read()
-    audio_data, sample_rate = sf.read(io.BytesIO(wav_bytes), dtype="int32")
-    sample_width = audio_data.dtype.itemsize
-    log.info("audio sample_rate:{%s}, sample_width:{%s}", sample_rate, sample_width)
-    audio = sr.AudioData(audio_data, sample_rate, sample_width)
-    return audio
-
-
-# language for speech to text recognition
-# pylint: disable=W0511
-# TODO: detect this automatically based on the user's language
-LANGUAGE = "en-US"
-
-
-# run speech recognition on the audio data
-def recognize_audio(audio_bytes):
-    """run speech recognition on the audio data"""
-    recognizer = sr.Recognizer()
-    audio_text = recognizer.recognize_google(audio_bytes, language=LANGUAGE)
-    return audio_text
 
 
 # send the response as a WhatsApp message back to the user
