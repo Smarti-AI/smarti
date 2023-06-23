@@ -18,8 +18,8 @@ elif [ $1 = "-local" ]; then
     rm -rf .venv
     python3 -m venv .venv
     source .venv/bin/activate
-    ./.venv/bin/pip install --upgrade pip
-    ./.venv/bin/pip install -r ./requirements.txt
+    pip install --upgrade pip
+    pip install -r ./requirements.txt
 
     black smarti tests
     pylint --fail-under=9.9 smarti tests
