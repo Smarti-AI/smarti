@@ -12,6 +12,16 @@ def test_index(flask_app, client):
     assert "Smarti" in content
 
 
+def test_webhook_whatsapp(flask_app, client, mocker):
+    """test whatsapp webhook"""
+    assert flask_app is not None
+    assert mocker is not None
+    res = client.get("/webhook/whatsapp")
+    assert res.status_code == 400
+    res = client.post("/webhook/whatsapp")
+    assert res.status_code == 415
+
+
 def test_heroku_boot():
     """test content of boot file"""
     with open("./Procfile", mode="r", encoding="utf-8") as proc_file:
