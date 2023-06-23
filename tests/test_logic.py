@@ -16,7 +16,13 @@ def test_heroku_boot():
     """test content of boot file"""
     with open("./Procfile", mode="r", encoding="utf-8") as proc_file:
         line = proc_file.readlines()[0]
-        assert line.split(" ")[-1] == "smarti.app:app"
+        parts = line.split(" ")
+        assert (
+            len(parts) == 3
+            and parts[0] == "web:"
+            and parts[1] == "gunicorn"
+            and parts[2] == "smarti.app:app"
+        )
 
 
 def test_upload_workbook():
