@@ -21,9 +21,6 @@ whatsapp_token = os.environ.get(
     "EAALABLp6AXUBANXmeoyMt9lF5z28Qn7iFxLFEMuFZCPqcgxHbRvybY9VSzuapiUttn2C1DZBFr0S4n9NWnXfXoKmtUIkHgv1hGfsncVHkuyRLJJan7qvOcQZC6a8CJQCiZBG6ZCeVAFaKFKZCHiCCVjq2S9n7ec7LYSwb0FMZCrQ0ta5dvEIBr5ko5VSWdaScZB1jUZAlDHNLygZDZD",
 )
 
-# Verify Token defined when configuring the webhook
-verify_token = os.environ.get("VERIFY_TOKEN", "WHATSAPP-TOKEN-12345678")
-
 
 @app.route("/")
 def hello_world():
@@ -36,18 +33,18 @@ def hello_world():
 @app.route("/webhook/whatsapp", methods=["POST", "GET"])
 def webhook():
     """WhatsApp webhook handler"""
+    verify_token = os.environ.get("VERIFY_TOKEN", "WHATSAPP-TOKEN-12345678")
     if request.method == "GET":
-        return verify(request)
+        return verify(request, verify_token)
     if request.method == "POST":
         return handle_message(request)
-
     return jsonify({"status": "error", "message": "Method not allowed"}), 405
 
 
 # Required webhook verification for WhatsApp
 # info on verification request payload:
 # https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests
-def verify(req):
+def verify(req, verify_token):
     """Parse params from the webhook verification request"""
     mode = req.args.get("hub.mode")
     token = req.args.get("hub.verify_token")
