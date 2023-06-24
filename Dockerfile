@@ -10,7 +10,7 @@ COPY . .
 
 RUN black smarti tests
 RUN pylint --fail-under=9.9 smarti tests
-RUN pytest --cov-fail-under=50 --cov smarti -v tests
+RUN pytest --cov-fail-under=55 --cov smarti -v tests
 
 ENTRYPOINT ["python3"]
 CMD ["./smarti/app.py" ]
