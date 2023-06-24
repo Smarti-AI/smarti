@@ -22,7 +22,7 @@ log.addHandler(logging.StreamHandler(sys.stdout))
 # pylint: disable=line-too-long
 whatsapp_token = os.environ.get(
     "WHATSAPP_TOKEN",
-    "EAALABLp6AXUBANXmeoyMt9lF5z28Qn7iFxLFEMuFZCPqcgxHbRvybY9VSzuapiUttn2C1DZBFr0S4n9NWnXfXoKmtUIkHgv1hGfsncVHkuyRLJJan7qvOcQZC6a8CJQCiZBG6ZCeVAFaKFKZCHiCCVjq2S9n7ec7LYSwb0FMZCrQ0ta5dvEIBr5ko5VSWdaScZB1jUZAlDHNLygZDZD",
+    "EAALABLp6AXUBACtlNy7tAhFoC27PMLkseZBxwKaF2fwx8eUq0D6NBPZCwkPLe1QZCaOofCPpfmTwrZCCO5cgTA0tIfedkMzRpduj7XQoyqlkkKZBkVUfpDHLK7QXpPfK3tiPAZBV54XZA8kcrNtXyA8bdmuiWMkGNNPiVwmZB3JRyZCpHrIz1HzGqjnT6VDvWmcPW0iaBd321aQZDZD",
 )
 
 # Verify Token defined when configuring the webhook
