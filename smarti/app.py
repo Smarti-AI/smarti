@@ -24,6 +24,8 @@ log = logging.getLogger("app")
 log.setLevel(logging.DEBUG)
 log.addHandler(logging.StreamHandler(sys.stdout))
 
+access_token="EAALABLp6AXUBADy3As3FrbOORGwNStnQqgweDp5CeN3fZCwtkIOZC5gjhtgxGFtIqVRAgZBZAT1omj9w7GG7gNZCFOgxZCnJT0ZBI1tI0aUtG2G6UTDeGB0qZABs3rhc4BFAZC3cwZBlWg4ZAp5cvZAysty2O4Vqyev4okPksohFehgAHvC3zT2t3FAZAKGvVo1eMKVlZCHXbOKQcebwZDZD"
+
 
 @app.route("/")
 def hello_world():
@@ -200,8 +202,10 @@ def send_whatsapp_message(body, message):
     value = body["entry"][0]["changes"][0]["value"]
     phone_number_id = value["metadata"]["phone_number_id"]
     from_number = value["messages"][0]["from"]
+    log.info("access_token: {%s}", access_token)
+    log.info("get_whatsapp_token(): {%s}", get_whatsapp_token())
     headers = {
-        "Authorization": f"Bearer {get_whatsapp_token()}",
+        "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
     }
     url = "https://graph.facebook.com/v15.0/" + phone_number_id + "/messages"
