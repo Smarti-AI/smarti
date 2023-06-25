@@ -1,8 +1,12 @@
 """flask app runner"""
+import sys
+
+sys.path.append("/usr/bin/ffmpeg")
+sys.path.append("/usr/bin/ffprobe")
+
 import io
 import logging
 import os
-import sys
 
 import pydub
 import requests
@@ -22,7 +26,7 @@ log.addHandler(logging.StreamHandler(sys.stdout))
 # pylint: disable=line-too-long
 whatsapp_token = os.environ.get(
     "WHATSAPP_TOKEN",
-    "EAALABLp6AXUBACtlNy7tAhFoC27PMLkseZBxwKaF2fwx8eUq0D6NBPZCwkPLe1QZCaOofCPpfmTwrZCCO5cgTA0tIfedkMzRpduj7XQoyqlkkKZBkVUfpDHLK7QXpPfK3tiPAZBV54XZA8kcrNtXyA8bdmuiWMkGNNPiVwmZB3JRyZCpHrIz1HzGqjnT6VDvWmcPW0iaBd321aQZDZD",
+    "EAALABLp6AXUBACbXrPVo8auzUGwWMIufKBJKk8hWmYXvpWxuyUB7ZARZBGTTTnzGYTYoaR6tyvQoYn69sLyTwHQ9ItePtPvfOJuK1d8ZCCSdsFH1hIW66MSZCkUfLINqZB3ih2S8zMI0rZARbV9k6HJgGLZCAD9bPiOvcmIbRmtcljxqnD4UYFAW3FQctOzFYOPWpXbwvSsygZDZD",
 )
 
 # Verify Token defined when configuring the webhook
