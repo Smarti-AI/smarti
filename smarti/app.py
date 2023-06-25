@@ -218,11 +218,11 @@ def send_whatsapp_message(body, message):
 
 def get_whatsapp_token():
     """get the WhatsApp token from the environment variables"""
-    return os.environ.get("WHATSAPP_TOKEN")
+    return os.environ.get("WHATSAPP_ACCESS_TOKEN")
 
 def get_whatsapp_verify_token():
     """get the WhatsApp verify token from the environment variables"""
-    return os.environ.get("VERIFY_TOKEN")
+    return os.environ.get("WHATSAPP_VERIFY_TOKEN")
 
 
 if __name__ == "__main__":
