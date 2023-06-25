@@ -15,8 +15,11 @@ import speech_recognition as sr
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 
-load_dotenv()
+# Get the path to the directory this file is in
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
+# Connect the path with your '.env' file name
+load_dotenv(os.path.join(BASEDIR, '.env'))
 
 app = Flask(__name__, static_url_path="/static")
 log = logging.getLogger("app")
