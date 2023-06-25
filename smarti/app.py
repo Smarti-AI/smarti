@@ -27,7 +27,6 @@ log.addHandler(logging.StreamHandler(sys.stdout))
 
 # Access token for your WhatsApp business account app
 whatsapp_token = os.environ.get('WHATSAPP_ACCESS_TOKEN')
-log.info("whatsapp_token", whatsapp_token)
 
 
 # Verify Token defined when configuring the webhook
