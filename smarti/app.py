@@ -55,7 +55,7 @@ def verify(req):
     # Check if a token and mode were sent
     if mode and token:
         # Check the mode and token sent are correct
-        if mode == "subscribe" and token == verify_token:
+        if mode == "subscribe" and token == get_whatsapp_verify_token():
             # Respond with 200 OK and challenge token from the request
             log.info("WEBHOOK_VERIFIED")
             return challenge, 200
@@ -148,7 +148,7 @@ def handle_audio_message(audio_id):
 def get_media_url(media_id):
     """get the media url from the media id"""
     headers = {
-        "Authorization": f"Bearer {whatsapp_token}",
+        "Authorization": f"Bearer {get_whatsapp_token()}",
     }
     url = f"https://graph.facebook.com/v16.0/{media_id}/"
     response = requests.get(url, headers=headers, timeout=30)
@@ -160,7 +160,7 @@ def get_media_url(media_id):
 def download_media_file(media_url):
     """download the media file from the media url"""
     headers = {
-        "Authorization": f"Bearer {whatsapp_token}",
+        "Authorization": f"Bearer {get_whatsapp_token()}",
     }
     response = requests.get(media_url, headers=headers, timeout=30)
     log.info("first 10 digits of the media file: {%s}", response.content[:10])
@@ -201,7 +201,7 @@ def send_whatsapp_message(body, message):
     phone_number_id = value["metadata"]["phone_number_id"]
     from_number = value["messages"][0]["from"]
     headers = {
-        "Authorization": f"Bearer {whatsapp_token}",
+        "Authorization": f"Bearer {get_whatsapp_token()}",
         "Content-Type": "application/json",
     }
     url = "https://graph.facebook.com/v15.0/" + phone_number_id + "/messages"
@@ -216,10 +216,15 @@ def send_whatsapp_message(body, message):
     response.raise_for_status()
 
 
+def get_whatsapp_token():
+    """get the WhatsApp token from the environment variables"""
+    return os.environ.get("WHATSAPP_TOKEN")
+
+def get_whatsapp_verify_token():
+    """get the WhatsApp verify token from the environment variables"""
+    return os.environ.get("VERIFY_TOKEN")
+
+
 if __name__ == "__main__":
-    # Access token for your WhatsApp business account app
-    whatsapp_token = os.environ.get('WHATSAPP_ACCESS_TOKEN')
-    # Verify Token defined when configuring the webhook
-    verify_token = os.environ.get("VERIFY_TOKEN", "WHATSAPP-TOKEN-12345678")
     port = int(os.environ.get("PORT", 8888))
     app.run(debug=True, host="0.0.0.0", port=port)
