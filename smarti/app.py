@@ -25,14 +25,6 @@ log.setLevel(logging.DEBUG)
 log.addHandler(logging.StreamHandler(sys.stdout))
 
 
-# Access token for your WhatsApp business account app
-whatsapp_token = 'EAALABLp6AXUBAL8odu6dM5wC3tW4EQ4krwLRZCfL8ZBjW3NVbQjiU3SLgl5pZA6PcZCgyJIVyQ5h6usqIylSFhZARciU6rGi60L1mDkWJZBcOpjqVO4rwZA8Uo06bZBHgIKZCbBMKltHPC8PTIPHuKvZBZBsfs1pZAfEMT5HZAg0xQZCgo3tfDnlurkqQi7RkY8LvrACcbVYbAJjQvJwZDZD'
-
-
-# Verify Token defined when configuring the webhook
-verify_token = os.environ.get("VERIFY_TOKEN", "WHATSAPP-TOKEN-12345678")
-
-
 @app.route("/")
 def hello_world():
     """default flask handler"""
@@ -225,5 +217,9 @@ def send_whatsapp_message(body, message):
 
 
 if __name__ == "__main__":
+    # Access token for your WhatsApp business account app
+    whatsapp_token = os.environ.get('WHATSAPP_ACCESS_TOKEN')
+    # Verify Token defined when configuring the webhook
+    verify_token = os.environ.get("VERIFY_TOKEN", "WHATSAPP-TOKEN-12345678")
     port = int(os.environ.get("PORT", 8888))
     app.run(debug=True, host="0.0.0.0", port=port)
