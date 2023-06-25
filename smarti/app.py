@@ -14,12 +14,10 @@ import soundfile as sf
 import speech_recognition as sr
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
+from os.path import join, dirname
 
-# Get the path to the directory this file is in
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
-
-# Connect the path with your '.env' file name
-load_dotenv(os.path.join(BASEDIR, '.env'))
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 app = Flask(__name__, static_url_path="/static")
 log = logging.getLogger("app")
@@ -28,7 +26,7 @@ log.addHandler(logging.StreamHandler(sys.stdout))
 
 
 # Access token for your WhatsApp business account app
-whatsapp_token = os.getenv('WHATSAPP_ACCESS_TOKEN')
+whatsapp_token = os.environ.get('WHATSAPP_ACCESS_TOKEN')
 log.info("whatsapp_token", whatsapp_token)
 
 
