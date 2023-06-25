@@ -1,5 +1,6 @@
 """test whatsapp"""
 
+
 import smarti.app
 
 
@@ -37,3 +38,15 @@ def test_whatsapp_handle_message(request_context, mocker):
         req.get_json.return_value = state
         res = smarti.app.handle_message(req)
         assert res[1] == 200
+
+
+def test_whatsapp_send_message(mocker):
+    """test send message"""
+    mock_request = mocker.patch("requests.post")
+
+    value = {
+        "value": {"metadata": {"phone_number_id": "+972"}, "messages": [{"from": "x"}]}
+    }
+    body = {"entry": [{"changes": [value]}]}
+    smarti.app.send_whatsapp_message(body, "example message")
+    assert mock_request.call_count == 1
