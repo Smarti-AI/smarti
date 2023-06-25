@@ -26,7 +26,7 @@ log.addHandler(logging.StreamHandler(sys.stdout))
 
 
 # Access token for your WhatsApp business account app
-whatsapp_token = 'EAALABLp6AXUBABJRqF721Xs7xZA9PTpZCGAlSbLbwBYUPYCMvZB9US6NbkbYsPuZAxViuk2PJ23slsIOsTGgOcmGNFYCZBYsE3z0oGp0U5X1PFx2iyZApzt8gVsLY1ZCxYILgibJexvKZAQBSNj1GlLZBCv58PKmbTfsljiHOQhs7iGKSfmOhZA5ZCE'
+whatsapp_token = 'EAALABLp6AXUBAGL4GWIaMWHS0gEKS8ctCW9UJspFm9LFQ60qu1her5N8Al56H8BcAyRhsEYQBHdfZCRTkLHFLovluoPl86m5yMZCEAdJkfTOpok1xWf6LNqjAZAn1mxKqffK18TQ09Hn9ZCx4e7D9NfTuwWSZAHKczxQB7yFaThWRnGQXfPjz'
 
 
 # Verify Token defined when configuring the webhook
