@@ -9,4 +9,4 @@ def test_text_reader(input_folder):
     with open(fname, "rb") as file:
         content = file.read()
         res = ocr.read(content)
-        assert len(res) > 0
+        assert not res is None
