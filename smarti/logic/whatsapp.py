@@ -11,11 +11,6 @@ import speech_recognition as sr
 from flask import jsonify
 
 
-pydub.AudioSegment.ffmpeg = "/usr/bin/ffmpeg"
-pydub.AudioSegment.ffprobe = "/usr/bin/ffprobe"
-pydub.AudioSegment.converter = "/usr/bin/ffmpeg"
-
-
 log = logging.getLogger("app")
 log.setLevel(logging.DEBUG)
 log.addHandler(logging.StreamHandler(sys.stdout))
