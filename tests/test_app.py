@@ -1,14 +1,14 @@
 """test logic"""
 
-from smarti import app
+from smarti.logic import whatsapp
 
 
 def handle_whatsapp_message(body):
     """handle whatsapp message"""
-    assert app.handle_whatsapp_message(body) == ""
+    assert whatsapp.handle_whatsapp_message(body) == ""
 
 
 def handle_audio_message():
     """handle audio message"""
     # pylint: disable=no-value-for-parameter
-    assert app.handle_audio_message() == ""
+    assert whatsapp.handle_audio_message() == ""
