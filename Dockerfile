@@ -3,7 +3,7 @@
 FROM python:3.9-slim-buster
 
 # install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6
 
 WORKDIR /app
 
