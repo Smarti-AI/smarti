@@ -16,14 +16,10 @@ def test_handle_whatsapp_message_text():
                                 {
                                     "type": "text",
                                     "from": "123450",
-                                    "text": {
-                                        "body": "hello"
-                                    }
+                                    "text": {"body": "hello"},
                                 }
                             ],
-                            "metadata": {
-                                "phone_number_id": "+972123456789"
-                            }
+                            "metadata": {"phone_number_id": "+972123456789"},
                         }
                     }
                 ]
@@ -46,30 +42,29 @@ def test_handle_whatsapp_message_image():
                                 {
                                     "type": "image",
                                     "from": "123450",
-                                    "text": {
-                                        "body": "hello"
-                                    }
+                                    "text": {"body": "hello"},
                                 }
                             ],
-                            "metadata": {
-                                "phone_number_id": "+972123456789"
-                            }
+                            "metadata": {"phone_number_id": "+972123456789"},
                         }
                     }
                 ]
             },
-
         ],
-
     }
 
     message = whatsapp.parse_message(body)
     assert message == "image messages not yet supported"
 
+
 def test_handle_whatsapp_message(mocker):
     """test handle whatsapp message"""
-    parse_message = mocker.patch("smarti.logic.whatsapp.parse_message", return_value="hello")
-    send_whatsapp_message = mocker.patch("smarti.logic.whatsapp.send_whatsapp_message", return_value="hello")
+    parse_message = mocker.patch(
+        "smarti.logic.whatsapp.parse_message", return_value="hello"
+    )
+    send_whatsapp_message = mocker.patch(
+        "smarti.logic.whatsapp.send_whatsapp_message", return_value="hello"
+    )
     whatsapp.handle_whatsapp_message("hello")
     assert parse_message.called
     assert send_whatsapp_message.called
@@ -125,7 +120,7 @@ def test_whatsapp_send_message(mocker):
 
 def test_convert_audio_bytes():
     """test convert audio bytes"""
-    with open('tests/hello_world.ogg', 'rb') as file:
+    with open("tests/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
     audio_data = whatsapp.convert_audio_bytes(audio_bytes)
     assert isinstance(audio_data, AudioData)
@@ -133,8 +128,10 @@ def test_convert_audio_bytes():
 
 def test_recognize_audio(mocker):
     """test recognize audio"""
-    mocker.patch("speech_recognition.Recognizer.recognize_google", return_value="hello smarti")
-    with open('tests/hello_world.ogg', 'rb') as file:
+    mocker.patch(
+        "speech_recognition.Recognizer.recognize_google", return_value="hello smarti"
+    )
+    with open("tests/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
     audio_data = whatsapp.convert_audio_bytes(audio_bytes)
     text = whatsapp.recognize_audio(audio_data)
@@ -152,20 +149,24 @@ def test_download_media_file(mocker):
 def test_get_media_url(mocker):
     """test get media url"""
     mock_request = mocker.patch("requests.get")
-    mock_request.return_value.json.return_value = {"url": "https://example.com/download/ogg"}
+    mock_request.return_value.json.return_value = {
+        "url": "https://example.com/download/ogg"
+    }
     url = whatsapp.get_media_url("123")
     assert url == "https://example.com/download/ogg"
 
 
 def test_handle_audio_message(mocker):
     """test handle audio message"""
-    mocker.patch("smarti.logic.whatsapp.get_media_url", return_value='tests/hello_world.ogg')
-
-    with open('tests/hello_world.ogg', 'rb') as file:
+    with open("tests/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
 
+    mocker.patch(
+        "smarti.logic.whatsapp.get_media_url", return_value="tests/hello_world.ogg"
+    )
     mocker.patch("smarti.logic.whatsapp.download_media_file", return_value=audio_bytes)
-    mocker.patch("speech_recognition.Recognizer.recognize_google", return_value="hello smarti")
-
+    mocker.patch(
+        "speech_recognition.Recognizer.recognize_google", return_value="hello smarti"
+    )
     message = whatsapp.handle_audio_message("123")
     assert message == "hello smarti"

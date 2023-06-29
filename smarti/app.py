@@ -10,9 +10,6 @@ from flask import Flask, jsonify, request
 # smarti imports
 from smarti.logic import whatsapp
 
-# sys.path.append("/usr/bin/ffmpeg")
-# sys.path.append("/usr/bin/ffprobe")
-
 # we need to go one level up to import from the root, since the sources are under smarti path
 dotenv_path = join(dirname(__file__), "..", ".env")
 load_dotenv(dotenv_path)
