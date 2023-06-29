@@ -36,8 +36,8 @@ elif [ $1 = "-test" ]; then
 elif [ $1 = "-docker" ]; then
     echo "Building and running docker image"
     docker stop smarti-container
-    docker rm -f smarti-container
-    docker rmi -f smarti-image
+    docker rm smarti-container
+    docker rmi smarti-image
     # build docker and run
     docker build --tag smarti-image --build-arg CACHEBUST=$(date +%s) .
     docker run --name smarti-container -p 8888:8888 -d smarti-image
