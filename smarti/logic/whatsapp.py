@@ -169,7 +169,7 @@ def convert_audio_bytes(audio_bytes):
 # language for speech to text recognition
 # pylint: disable=W0511
 # TODO: detect this automatically based on the user's language
-LANGUAGE = "en-US"
+LANGUAGE = "iw-IL"
 
 
 # run speech recognition on the audio data
