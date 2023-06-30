@@ -25,7 +25,7 @@ def test_tesseract_reader(input_folder):
     """test tesseract OCR"""
     with open(input_folder + "formula1.png", "rb") as file:
         text = tesseract.read_text(file.read())
-        assert "4x* —5x-12=0\n" == text
+        assert "4x* —5x-12=0" == text.strip()
 
     with open(input_folder + "question.png", "rb") as file:
         lines = tesseract.read_text(file.read()).split("\n")
@@ -41,6 +41,8 @@ def test_tesseract_reader(input_folder):
     with open(input_folder + "heb-question.png", "rb") as file:
         lines = tesseract.read_text(file.read(), "heb").split("\n")
         print("\n".join(lines))
-        assert lines[0] == "1. לְרון הָיוּ 6 קוּפְסָאוּת וּבְכל קוּפְסָא 4 גוּלות."
-        assert lines[1] == ""
-        assert lines[2] == "כָּמַה גוּלוּת יָש לְרוּן?"
+        assert (
+            lines[0].strip() == "1. לְרון הָיוּ 6 קוּפְסָאוּת וּבְכל קוּפְסָא 4 גוּלות."
+        )
+        assert lines[1].strip() == ""
+        assert lines[2].strip() == "כָּמַה גוּלוּת יָש לְרוּן?"
