@@ -2,6 +2,9 @@
 
 FROM python:3.9-slim-buster
 
+# install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
