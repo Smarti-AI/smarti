@@ -23,7 +23,7 @@ elif [ $1 = "-local" ]; then
 
     black smarti tests
     pylint --fail-under=9.9 smarti tests
-    pytest --cov-fail-under=94 --cov smarti -v tests
+    pytest --cov-fail-under=95 --cov smarti -v tests
 elif [ $1 = "-test" ]; then
     trap 'abort' 0
     set -e
@@ -32,7 +32,7 @@ elif [ $1 = "-test" ]; then
     source .venv/bin/activate
     black smarti tests
     pylint --fail-under=9.9 smarti tests
-    pytest --cov-fail-under=94 --cov smarti -v tests
+    pytest --cov-fail-under=95 --cov smarti -v tests
 elif [ $1 = "-docker" ]; then
     echo "Building and running docker image"
     docker stop smarti-container
