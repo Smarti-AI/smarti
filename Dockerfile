@@ -3,6 +3,9 @@
 FROM python:3.9-slim-buster
 RUN apt-get update && apt-get install tesseract-ocr-all -y
 
+# install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
