@@ -3,7 +3,7 @@
 import easyocr
 
 
-easyocr_reader = easyocr.Reader(["en"])
+ocr_reader = easyocr.Reader(["en"])
 
 
 def recreate_reader(language: list) -> easyocr.Reader:
@@ -11,7 +11,7 @@ def recreate_reader(language: list) -> easyocr.Reader:
     return easyocr.Reader(language)
 
 
-def read_text(image: bytes, reader: easyocr.Reader) -> str:
+def read_text(image: bytes, reader: easyocr.Reader = ocr_reader) -> str:
     """open image, perform OCR and return text by using easy"""
     result = reader.readtext(image)
     return merge_rectangles_to_lines(result)
