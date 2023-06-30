@@ -28,4 +28,12 @@ def test_tesseract_reader(input_folder):
         results.append(tesseract.read_text(file.read()))
         print(results[-1])
 
-    assert len(results) == 1
+    with open(input_folder + "question.png", "rb") as file:
+        results.append(tesseract.read_text(file.read()))
+        print(results[-1])
+
+    with open(input_folder + "heb-question.png", "rb") as file:
+        results.append(tesseract.read_text(file.read(), "heb"))
+        print(results[-1])
+
+    assert len(results) == 3
