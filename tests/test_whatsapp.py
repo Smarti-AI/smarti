@@ -118,20 +118,20 @@ def test_whatsapp_send_message(mocker):
     assert mock_request.call_count == 1
 
 
-def test_convert_audio_bytes():
+def test_convert_audio_bytes(input_folder):
     """test convert audio bytes"""
-    with open("tests/hello_world.ogg", "rb") as file:
+    with open(f"{input_folder}/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
     audio_data = whatsapp.convert_audio_bytes(audio_bytes)
     assert isinstance(audio_data, AudioData)
 
 
-def test_recognize_audio(mocker):
+def test_recognize_audio(mocker, input_folder):
     """test recognize audio"""
     mocker.patch(
         "speech_recognition.Recognizer.recognize_google", return_value="hello smarti"
     )
-    with open("tests/hello_world.ogg", "rb") as file:
+    with open(f"{input_folder}/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
     audio_data = whatsapp.convert_audio_bytes(audio_bytes)
     text = whatsapp.recognize_audio(audio_data)
@@ -156,9 +156,9 @@ def test_get_media_url(mocker):
     assert url == "https://example.com/download/ogg"
 
 
-def test_handle_audio_message(mocker):
+def test_handle_audio_message(mocker, input_folder):
     """test handle audio message"""
-    with open("tests/hello_world.ogg", "rb") as file:
+    with open(f"{input_folder}/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
 
     mocker.patch(

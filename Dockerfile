@@ -3,9 +3,11 @@
 FROM python:3.9-slim-buster
 
 # Combine multiple apt-get to reduce docker layres
-RUN apt-get update \
-    && apt-get install -y ffmpeg \
-    && apt-get install tesseract-ocr-all -y
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    tesseract-ocr-all \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
     
     
 WORKDIR /app
