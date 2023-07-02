@@ -180,9 +180,9 @@ def test_get_media_url(mocker):
     assert url == "https://example.com/download/ogg"
 
 
-def test_handle_audio_message(mocker):
+def test_handle_audio_message(mocker, input_folder):
     """test handle audio message"""
-    with open("tests/hello_world.ogg", "rb") as file:
+    with open(f"{input_folder}/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
 
     mocker.patch(

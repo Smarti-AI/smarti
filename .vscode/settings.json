@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
-        "Smarti"
+        "easyocr",
+        "pytesseract",
+        "readtext",
+        "Smarti",
+        "tesseract"
     ]
 }
