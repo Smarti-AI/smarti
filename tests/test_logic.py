@@ -43,4 +43,5 @@ def test_upload_workbook():
 
 def test_send_message():
     """test chat"""
+    assert pf.send_message("Hey Smarti") == "Hey Smarti"
     assert pf.send_message("") == ""
