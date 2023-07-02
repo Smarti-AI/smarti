@@ -56,7 +56,7 @@ def test_handle_whatsapp_message_image():
     assert message == "image messages not yet supported"
 
 
-def test_handle_whatsapp_message_audio(mocker):
+def test_handle_whatsapp_message_audio(mocker, input_folder):
     """test handle whatsapp image message"""
     body = {
         "entry": [
@@ -79,7 +79,7 @@ def test_handle_whatsapp_message_audio(mocker):
         ],
     }
 
-    with open("tests/hello_world.ogg", "rb") as file:
+    with open(f"{input_folder}/hello_world.ogg", "rb") as file:
         audio_bytes = file.read()
 
     get_media_url = mocker.patch(
