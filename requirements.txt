@@ -16,3 +16,4 @@ ffprobe-python==1.0.3
 python-dotenv==1.0.0
 numpy==1.25.0
 urllib3==1.26.6
+openai==0.27.8

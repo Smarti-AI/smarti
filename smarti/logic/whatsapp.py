@@ -8,6 +8,7 @@ from flask import jsonify
 
 # smarti imports
 from smarti.logic import sound
+from smarti.logic.bot import onboarding
 
 log = logging.getLogger("app")
 log.setLevel(logging.DEBUG)
@@ -87,7 +88,7 @@ def handle_whatsapp_message(body):
     message_body = parse_message(body)
     log.info("received message: {%s}", message_body)
 
-    response = "you said: " + message_body
+    response = onboarding.get_next_message(message_body)
     send_whatsapp_message(body, response)
 
 
