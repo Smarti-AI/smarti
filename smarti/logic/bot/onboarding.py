@@ -4,18 +4,21 @@ import smarti.logic.openai as openai
 from smarti.logic import db
 
 
-def get_next_message(chat_history):
+def get_next_message(previous_messages, new_user_message):
     """get the next message from chatgpt, based on previous messages"""
-    if not chat_history:
+    if not previous_messages:
         content = get_prompt("Hebrew")
-        chat_history = [{"role": "system", "content": content}]
-        db.save_new_bot_message(chat_history)
+        prompt = [{"role": "system", "content": content}]
+        db.save_new_bot_message(prompt)
 
-    chat_gpt_new_message = openai.get_completion_from_messages(chat_history)
+    all_messages = db.save_new_user_message(new_user_message)
+
+    chat_gpt_new_message = openai.get_completion_from_messages(all_messages)
     print("chat_gpt_new_message", chat_gpt_new_message)
     if ":::::" in chat_gpt_new_message:
         user_data = chat_gpt_new_message.split("::::::")[1]
         print("user_data", user_data)
+        chat_gpt_new_message = "Onboarding finished!"
         # we have user data now, we can save it to the database and start a new conversation
     return chat_gpt_new_message
 

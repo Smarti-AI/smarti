@@ -88,9 +88,9 @@ def handle_whatsapp_message(body):
     message_body = parse_message(body)
     log.info("received message: {%s}", message_body)
 
-    db.save_new_user_message(message_body)
+    # db.save_new_user_message(message_body)
     messages = db.load_messages()
-    response = onboarding.get_next_message(messages)
+    response = onboarding.get_next_message(messages, message_body)
     db.save_new_bot_message(response)
     send_whatsapp_message(body, response)
 
