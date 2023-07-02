@@ -7,8 +7,7 @@ from smarti.logic import db
 def get_next_message(previous_messages, new_user_message):
     """get the next message from chatgpt, based on previous messages"""
     if not previous_messages:
-        content = get_prompt("Hebrew")
-        prompt = [{"role": "system", "content": content}]
+        prompt = get_prompt("Hebrew")
         db.save_new_bot_message(prompt)
 
     all_messages = db.save_new_user_message(new_user_message)
