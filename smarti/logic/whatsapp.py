@@ -1,15 +1,13 @@
 """whatsapp.py - handle WhatsApp messages"""
-import io
 import logging
 import os
 import sys
 
-import pydub
 import requests
-import soundfile as sf
-import speech_recognition as sr
 from flask import jsonify
 
+# smarti imports
+from smarti.logic import sound
 
 log = logging.getLogger("app")
 log.setLevel(logging.DEBUG)
@@ -125,8 +123,8 @@ def handle_audio_message(audio_id):
     """handle audio messages"""
     audio_url = get_media_url(audio_id)
     audio_bytes = download_media_file(audio_url)
-    audio_data = convert_audio_bytes(audio_bytes)
-    audio_text = recognize_audio(audio_data)
+    audio_data = sound.convert_audio_bytes(audio_bytes)
+    audio_text = sound.recognize_audio(audio_data)
     return audio_text
 
 
@@ -151,33 +149,6 @@ def download_media_file(media_url):
     response = requests.get(media_url, headers=headers, timeout=30)
     log.info("first 10 digits of the media file: {%s}", response.content[:10])
     return response.content
-
-
-# convert ogg audio bytes to audio data which speechrecognition library can process
-def convert_audio_bytes(audio_bytes):
-    """convert ogg audio bytes to audio data which speechrecognition library can process"""
-    ogg_audio = pydub.AudioSegment.from_ogg(io.BytesIO(audio_bytes))
-    ogg_audio = ogg_audio.set_sample_width(4)
-    wav_bytes = ogg_audio.export(format="wav").read()
-    audio_data, sample_rate = sf.read(io.BytesIO(wav_bytes), dtype="int32")
-    sample_width = audio_data.dtype.itemsize
-    log.info("audio sample_rate:{%s}, sample_width:{%s}", sample_rate, sample_width)
-    audio = sr.AudioData(audio_data, sample_rate, sample_width)
-    return audio
-
-
-# language for speech to text recognition
-# pylint: disable=W0511
-# TODO: detect this automatically based on the user's language
-LANGUAGE = "en-US"
-
-
-# run speech recognition on the audio data
-def recognize_audio(audio_bytes):
-    """run speech recognition on the audio data"""
-    recognizer = sr.Recognizer()
-    audio_text = recognizer.recognize_google(audio_bytes, language=LANGUAGE)
-    return audio_text
 
 
 # send the response as a WhatsApp message back to the user
