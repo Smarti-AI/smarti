@@ -1,14 +1,17 @@
 """handle onboarding flow for new users"""
 
 import smarti.logic.openai as openai
+from smarti.logic import db
 
 
-def get_next_message(messages):
+def get_next_message(chat_history):
     """get the next message from chatgpt, based on previous messages"""
-    if not messages:
+    if not chat_history:
         content = get_prompt("Hebrew")
-        messages = [{"role": "system", "content": content}]
-    chat_gpt_new_message = openai.get_completion_from_messages(messages)
+        chat_history = [{"role": "system", "content": content}]
+        db.save_new_bot_message(chat_history)
+
+    chat_gpt_new_message = openai.get_completion_from_messages(chat_history)
     print("chat_gpt_new_message", chat_gpt_new_message)
     if ":::::" in chat_gpt_new_message:
         user_data = chat_gpt_new_message.split("::::::")[1]
