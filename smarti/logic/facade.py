@@ -1,6 +1,3 @@
-"""smarti facade aka API"""
-
-
 def upload_workbook(stream: bytes) -> int:
     """upload scanned workbook"""
     return len(stream)
