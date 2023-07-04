@@ -1,14 +1,15 @@
 """flask app runner"""
-import logging
 import os
 import sys
+import logging
 from os.path import join, dirname
-
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 
 # smarti imports
 from smarti.logic import whatsapp
+import smarti.storage.mongo_client as mongo
+
 
 # we need to go one level up to import from the root, since the sources are under smarti path
 dotenv_path = join(dirname(__file__), "..", ".env")
@@ -25,6 +26,20 @@ def hello_world():
     """default flask handler"""
     log.info("hello_world invoked")
     return app.send_static_file("index.html")
+
+
+@app.route("/health", methods=["GET"])
+def health_check():
+    """default flask handler"""
+    try:
+        mongo_conn = os.environ["MONGO_CONN"]
+        client = mongo.create_client(mongo_conn)
+        info = client.server_info()
+        log.info("Mongo Health Check %s", list(info.keys()))
+        return "OK", 200
+    except Exception:  # pylint: disable=broad-except
+        log.exception("Health Check failed")
+        return "Fail", 500
 
 
 # Accepts POST and GET requests at /webhook/whatsapp endpoint

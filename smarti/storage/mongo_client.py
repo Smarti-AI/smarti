@@ -1,15 +1,13 @@
 """mongo db access"""
 
-import os
 import pymongo
 
 
-def create_client(host=os.environ["MONGO_HOST"], port=os.environ["MONGO_PORT"]):
+def create_client(conn_string):  # pragma: no cover
     """create new Mongo Client"""
-    return pymongo.MongoClient(host, port)
+    return pymongo.MongoClient(conn_string)
 
 
 def read_workbooks(client: pymongo.MongoClient, workbook_id: str) -> list:
     """read workbook from database"""
     return [client.smarti.name, workbook_id]
-

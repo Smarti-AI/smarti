@@ -1,7 +1,9 @@
 """conftest"""
 
 import os
+from unittest import mock
 import pytest
+
 import smarti.app
 
 

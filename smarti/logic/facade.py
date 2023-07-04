@@ -1,3 +1,6 @@
+"""facade for smarti logic"""
+
+
 def upload_workbook(stream: bytes) -> int:
     """upload scanned workbook"""
     return len(stream)
