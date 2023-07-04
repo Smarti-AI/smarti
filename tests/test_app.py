@@ -1,7 +1,7 @@
 """test logic"""
 
 import os
-import mongomock
+
 from unittest import mock
 
 
@@ -14,10 +14,9 @@ def test_index(flask_app, client):
     assert "Smarti" in content
 
 
-def test_health_check(flask_app, client):
+def test_health_check(flask_app, client, mongo_client):
     """test flask_app health check"""
     env = {"MONGO_CONN": "url"}
-    mongo_client = mongomock.MongoClient(env.get("MONGO_CONN", ""))
     create_mongo_patch = "smarti.storage.mongo_client.create_client"
 
     assert flask_app is not None
