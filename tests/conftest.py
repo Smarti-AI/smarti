@@ -2,6 +2,7 @@
 
 import os
 import pytest
+import mongomock
 import smarti.app
 
 
@@ -29,3 +30,10 @@ def input_folder():
     path = os.path.abspath(__file__)
     dir_name = os.path.dirname(path)
     return f"{dir_name}/input/"
+
+
+@pytest.fixture
+def mongo_client():
+    """mongo client"""
+    env = {"MONGO_CONN": "url"}
+    return mongomock.MongoClient(env.get("MONGO_CONN", ""))

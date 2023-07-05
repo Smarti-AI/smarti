@@ -1,4 +1,4 @@
-"""smarti facade aka API"""
+"""facade for smarti logic"""
 
 
 def upload_workbook(stream: bytes) -> int:
