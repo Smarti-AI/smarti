@@ -33,6 +33,7 @@ def health_check():
     """default flask handler"""
     try:
         mongo_conn = os.environ["MONGO_CONN"]
+        log.info("mongo conn %s", mongo_conn.split("@")[1])
         client = mongo.create_client(mongo_conn)
         info = client.server_info()
         log.info("Mongo Health Check %s", list(info.keys()))
