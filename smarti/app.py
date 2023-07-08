@@ -9,6 +9,7 @@ from flask import Flask, jsonify, request
 # smarti imports
 from smarti.logic import whatsapp
 import smarti.storage.mongo_client as mongo
+import smarti.transport.telegram.telegram_bot as tb
 
 
 # we need to go one level up to import from the root, since the sources are under smarti path
@@ -19,6 +20,8 @@ app = Flask(__name__, static_url_path="/static")
 log = logging.getLogger("app")
 log.setLevel(logging.DEBUG)
 log.addHandler(logging.StreamHandler(sys.stdout))
+
+telegram = tb.TelegramBot(os.environ["TELEGRAM_TOKEN"])
 
 
 @app.route("/")
@@ -54,6 +57,13 @@ def webhook():
     return jsonify({"status": "error", "message": "Method not allowed"}), 405
 
 
+@telegram.bot.message_handler(func=lambda _: True)
+def telegram_handle_message(message):
+    """reply to all messages in telegram"""
+    telegram.bot.reply_to(message, message.text)
+
+
 if __name__ == "__main__":  # pragma: no cover
     port = int(os.environ.get("PORT", 8888))
     app.run(debug=True, host="0.0.0.0", port=port)
+    telegram.stop()

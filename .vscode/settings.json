@@ -5,6 +5,7 @@
         "pytesseract",
         "readtext",
         "Smarti",
+        "telebot",
         "tesseract"
     ]
 }
