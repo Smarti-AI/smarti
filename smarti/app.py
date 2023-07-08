@@ -40,6 +40,10 @@ def health_check():
         client = mongo.create_client(mongo_conn)
         info = client.server_info()
         log.info("Mongo Health Check %s", list(info.keys()))
+
+        assert telegram.bot_running
+        log.info("Telegram bot is running %s", telegram.bot_running)
+
         return "OK", 200
     except Exception:  # pylint: disable=broad-except
         log.exception("Health Check failed")
