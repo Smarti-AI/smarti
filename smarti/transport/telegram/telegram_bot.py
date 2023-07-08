@@ -4,6 +4,7 @@ import threading
 import telebot
 
 
+# pylint: disable=too-few-public-methods
 class TelegramBot:
     """telegram bot class"""
 

@@ -60,7 +60,7 @@ def webhook():
 @telegram.bot.message_handler(func=lambda _: True)
 def telegram_handle_message(message):
     """reply to all messages in telegram"""
-    telegram.bot.reply_to(message, message.text)
+    return telegram.bot.reply_to(message, f"Smarti replied: {message.text}")
 
 
 if __name__ == "__main__":  # pragma: no cover

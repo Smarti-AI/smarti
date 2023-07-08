@@ -1,8 +1,12 @@
 """test logic"""
 
 import os
-
 from unittest import mock
+from unittest.mock import MagicMock
+
+import pytest
+import telebot.apihelper as tg
+from smarti.app import telegram_handle_message
 
 
 def test_index(flask_app, client):
@@ -37,6 +41,14 @@ def test_webhook_whatsapp(flask_app, client, mocker):
     assert res.status_code == 400
     res = client.post("/webhook/whatsapp")
     assert res.status_code == 415
+
+
+def test_telegram_message():
+    """test telegram loop start"""
+    msg = MagicMock()
+    msg.text = "Hello"
+    with pytest.raises(tg.ApiTelegramException):
+        telegram_handle_message(msg)
 
 
 def test_heroku_boot():
