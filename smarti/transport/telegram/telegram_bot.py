@@ -21,5 +21,6 @@ class TelegramBot:
 
     def start(self):
         "start bot"
+        self.bot.stop_bot()
         self.bot_running = True
         self.bot.infinity_polling()
