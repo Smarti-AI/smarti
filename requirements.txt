@@ -10,11 +10,13 @@ gunicorn==20.1.0
 mongomock==4.1.2
 pytest-cov==4.1.0
 soundfile==0.12.1
+langchain==0.0.228
 pytesseract==0.3.10
 pymongo[srv]==4.4.0
 pytest-mock==3.11.1
 python-dotenv==1.0.0
 ffmpeg-python==0.2.0
 ffprobe-python==1.0.3
+pinecone-client==2.2.2
 pylint-fail-under==0.3.0
 speechrecognition==3.10.0
