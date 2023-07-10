@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "easyocr",
+        "langchain",
+        "llms",
         "pymongo",
         "pytesseract",
         "readtext",
