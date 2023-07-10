@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
+        "apihelper",
         "easyocr",
         "pymongo",
         "pytesseract",
         "readtext",
         "Smarti",
+        "telebot",
         "tesseract"
     ]
 }
