@@ -13,6 +13,9 @@ To clarify how LangChain simplifies the development process, let's examine the k
   <tr>
     <td><img src="./images/sequence-1.png"/></td>
   </tr>
+  <tr>
+    <td style='text-align:center; vertical-align:middle'>Smarti's Chat Flow</td>
+  </tr>
 </table> 
 
 
