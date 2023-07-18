@@ -1,0 +1,99 @@
+<mxfile host="65bd71144e">
+    <diagram id="_P1GkzgVPsLbAwyrR4X8" name="Page-1">
+        <mxGraphModel dx="800" dy="590" grid="1" gridSize="4" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="Student" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="32" y="48" width="80" height="412" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Smarti" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="144" y="48" width="80" height="416" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="9">
+                    <mxGeometry x="35" y="80" width="10" height="272" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FF6666;" vertex="1" parent="9">
+                    <mxGeometry x="35" y="188" width="10" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="ask question" style="html=1;verticalAlign=bottom;endArrow=block;entryX=-0.083;entryY=0.119;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" target="10" parent="1" source="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="109" y="128" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="sollution" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=-0.283;exitY=0.825;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" source="10" parent="1" target="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="109" y="204" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="PrivateGPT" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="256" y="48" width="80" height="416" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="15">
+                    <mxGeometry x="35" y="128" width="10" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="solve" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;exitX=0.917;exitY=0.174;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" target="18" parent="1" source="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="196" y="176" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="solution" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="18" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="188" y="206" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="ChatGPT" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="368" y="48" width="80" height="416" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="21">
+                    <mxGeometry x="35" y="192" width="10" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Knowledge&lt;br&gt;Base" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="48" width="80" height="416" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" vertex="1" parent="23">
+                    <mxGeometry x="35" y="128" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#FFFFFF;" vertex="1" parent="23">
+                    <mxGeometry x="35" y="256" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="24" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="195" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="read semantic index" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="24" parent="1" source="15">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="445" y="176" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="if PrivateGPT cannot solve, call ChatGPT" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;exitX=0.5;exitY=0.063;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" target="27" parent="1" source="30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="333" y="240" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="solution" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="27" parent="1" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="333" y="316" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="build semantic index from question and solution" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" edge="1" target="32" parent="1" source="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="340" y="304" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" edge="1" source="32" parent="1" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="445" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="sollution" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.017;exitY=0.303;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="10" target="3">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="75.5" y="356.4" as="targetPoint"/>
+                        <mxPoint x="180.16999999999996" y="356.4" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

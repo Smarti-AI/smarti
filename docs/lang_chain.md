@@ -7,10 +7,11 @@ LangChain is a framework that revolves around LLMs (Language Models) and makes i
 
 We can use LangChain Framework to build chatbots, Generative Question-Answering (GQA), summarization, and much more. LangChain has built-in support for integrations with systems including Amazon, Google, and Microsoft Azure cloud storage; API wrappers for news, movie information, and weather; Bash for summarization, syntax and semantics checking, and execution of shell scripts; multiple web scraping subsystems and templates; few-shot learning prompt generation support; finding and summarizing "todo" tasks in code; Google Drive documents, spreadsheets, and presentations summarization, extraction, and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic, and Hugging Face language models; iFixit repair guides and wikis search and summarization; MapReduce for question answering, and more.
 
-## Design Principles 
+## Virtual Assistants 
 To clarify how LangChain simplifies the development process, let's examine the key components of the framework and apply them to the development of a virtual assistant for students called Smarti. Smarti provides students with a step-by-step explanation of how to solve problems from the student workbook.
 
-### Smarti Flow
+### Smarti Flows
+Essentially, Smarti has two flows: ingest flow, and chat flow. Ingest flow is fairly simple, a student scans and uploads workbooks. Smarti performs the OCR job that translates images to text, parses question and sends each question to ChatGPT. ChatGPT solves the problem and sends the solution back to Smarti. Smarti combines questions and solution to the text file and builds a local [Semantic Index](https://en.wikipedia.org/wiki/Latent_semantic_analysis). Doing so, each new problem solved only once by the ChatGPT. The chat flow begins when the student's input is read and sent to Smarti for problem-solving. On the first attempt Smarti tries to use PrivateGPT that uses a local Semantic Index. 
 
 
 
