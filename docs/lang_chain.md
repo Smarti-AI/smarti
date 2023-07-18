@@ -11,13 +11,7 @@ We can use LangChain Framework to build chatbots, Generative Question-Answering 
 To clarify how LangChain simplifies the development process, let's examine the key components of the framework and apply them to the development of a virtual assistant for students called Smarti. Smarti provides students with a step-by-step explanation of how to solve problems from the student workbook.
 
 ### Smarti Flow
-```mermaid
-flowchart LR
 
-A[Student] --> B{Upload/Solve}
-B -->|Upload| D[Upload]
-B -->|Solve| E[Solve]
-```
 
 
 
