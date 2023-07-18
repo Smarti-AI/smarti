@@ -1,4 +1,4 @@
-# LangChain Framework
+# LangChain Framework Overview
 
 ## Background
 ChatGPT has impressive general knowledge, it can provide decent answers to various questions. However, when it comes to specific domains, its performance may fall short. But imagine if we could connect LLM to specific data sources, such as organizational databases, PDF documents, books, or other repositories of domain-specific knowledge. This connection would allow LLM to tap into that proprietary information and provide more accurate responses within that particular domain.
