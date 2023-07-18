@@ -8,7 +8,17 @@ LangChain is a framework that revolves around LLMs (Language Models) and makes i
 We can use LangChain Framework to build chatbots, Generative Question-Answering (GQA), summarization, and much more. LangChain has built-in support for integrations with systems including Amazon, Google, and Microsoft Azure cloud storage; API wrappers for news, movie information, and weather; Bash for summarization, syntax and semantics checking, and execution of shell scripts; multiple web scraping subsystems and templates; few-shot learning prompt generation support; finding and summarizing "todo" tasks in code; Google Drive documents, spreadsheets, and presentations summarization, extraction, and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic, and Hugging Face language models; iFixit repair guides and wikis search and summarization; MapReduce for question answering, and more.
 
 ## Design Principles 
-To clarify how LangChain simplifies the development process, let's examine the key components of the framework and apply them to the development of a virtual assistant for students. The flow of the virtual assistant is simple - it asks the student what course assignment he wants to get help on and then looks for existing assignments in the DB and provides a step-by-step explanation of the solution. If the assignment doesn't exist in the internal DB, Virtual Assistant will use 
+To clarify how LangChain simplifies the development process, let's examine the key components of the framework and apply them to the development of a virtual assistant for students called Smarti. Smarti provides students with a step-by-step explanation of how to solve problems from the student workbook.
+
+### Smarti Flow
+```mermaid
+flowchart LR
+
+B[Student] --> C{Upload Workbook/Solve Question}
+C -->|Upload| D[Result 1]
+C -->|Two| E[Result 2]
+```
+
 
 
 
