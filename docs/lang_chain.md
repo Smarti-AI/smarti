@@ -19,6 +19,8 @@ To clarify how LangChain simplifies the development process, let's examine the k
 </table> 
 
 
+## Design Principles
+[TBD]()
 
 
 
