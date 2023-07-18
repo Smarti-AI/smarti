@@ -14,9 +14,9 @@ To clarify how LangChain simplifies the development process, let's examine the k
 ```mermaid
 flowchart LR
 
-B[Student] --> C{Upload Workbook/Solve Question}
-C -->|Upload| D[Result 1]
-C -->|Two| E[Result 2]
+A[Student] --> B{Upload/Solve}
+B -->|Upload| D[Result 1]
+B -->|Solve| E[Result 2]
 ```
 
 
