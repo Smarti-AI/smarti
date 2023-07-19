@@ -21,10 +21,10 @@ To clarify how LangChain simplifies the development process, let's examine the k
 
 ## Design Principles
 There is a lot to unpack when learning LangChain, but at a high level there are 5 main components: 
-- Models: LangChain provides building blocks to interface with any language model.
+- Models: LangChain provides building blocks to interface with any language model. For example, wrappers make calls to different language models through common interfaces. Another example is the output parsers that help to extract information from the model output.
 - Prompts: a prompt refers to the input to the model. This input is often constructed from multiple components. LangChain provides several classes and functions to make constructing and working with prompts easy.
-- Chains: complex applications require chaining LLMs - either with each other or with other components.
-- Data Stores: many LLM applications require user-specific data that is not part of the model's training set. LangChain provides building blocks to load, transform, store, and query the data
+- Chains: complex applications require chaining LLMs - either with each other or with other components. LangChain provides the Chain interface for such "chained" applications. We define a Chain very generically as a sequence of calls to components, which can include other chains. 
+- Data Stores: many LLM applications require user-specific data that is not part of the model's training set. LangChain provides building blocks to load, transform, store, and query the data.
 - Agents: the Agent interface offers flexibility for applications needing a chain of calls to various tools based on user input. Agents can choose from a suite of tools, use multiple tools together, and decide on actions at each timestep (Action agents) or plan a sequence of actions upfront and execute them (Plan-and-execute agents).
 
   
