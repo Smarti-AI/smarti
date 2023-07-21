@@ -26,6 +26,14 @@ There is a lot to unpack when learning LangChain, but at a high level there are 
 - Chains: complex applications require chaining LLMs - either with each other or with other components. LangChain provides the Chain interface for such "chained" applications. We define a Chain very generically as a sequence of calls to components, which can include other chains. 
 - Data Stores: many LLM applications require user-specific data that is not part of the model's training set. LangChain provides building blocks to load, transform, store, and query the data.
 - Agents: the Agent interface offers flexibility for applications needing a chain of calls to various tools based on user input. Agents can choose from a suite of tools, use multiple tools together, and decide on actions at each timestep (Action agents) or plan a sequence of actions upfront and execute them (Plan-and-execute agents).
+<table width="256px">
+  <tr>
+    <td><img src="./images/langchain.png"/></td>
+  </tr>
+  <tr>
+    <td align="center">Smarti on LangChain</td>
+  </tr>
+</table> 
 
   
 
