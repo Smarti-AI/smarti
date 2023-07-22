@@ -1,4 +1,4 @@
-# LangChain Framework Overview
+# Building Virtual Assistants using LangChain.
 
 ## Background
 [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT) has impressive general knowledge, it can provide decent answers to various questions. However, when it comes to specific domains, its performance may fall short. But imagine if we could connect LLM to specific data sources, such as organizational databases, PDF documents, books, or other repositories of domain-specific knowledge. This connection would allow LLM to tap into that proprietary information and provide more accurate responses within that particular domain.
@@ -33,7 +33,14 @@ There is a lot to unpack when learning LangChain, but at a high level there are 
   <tr>
     <td align="center">Smarti on LangChain</td>
   </tr>
-</table> 
+</table>
+
+## Implementation 
+[TBD]()
+
+## Summary
+Personal assistants are a perfect use case for the LangChain Framework. [Prompt Templates](https://docs.langchain.com/docs/components/prompts/prompt-template) guide how the personal assistant acts, [Memory](https://docs.langchain.com/docs/components/memory/chat_message_history) helps to hold a conversation (short term memory), [Chains](https://docs.langchain.com/docs/components/chains/) or more specifically [Index-related chains](https://docs.langchain.com/docs/components/chains/index_related_chains) helps to combine the domain specific data (stored in the indexes) with LLMs, and finally, [Agents](https://docs.langchain.com/docs/components/agents/) simplify interactions with the external resources, drive the decision-making and perform tasks.
+
 
   
 
