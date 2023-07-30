@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "apihelper",
+        "dotenv",
         "easyocr",
         "pymongo",
         "pytesseract",
